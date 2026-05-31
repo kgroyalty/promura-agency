@@ -14,6 +14,51 @@ This file is also a methodology log. When the project completes, the entries her
 
 ---
 
+## 2026-05-31 — Proactive audit > reactive bug-fix. Surface what needs attention BEFORE the operator has to ask.
+
+**Trigger:** Operator: "you should figure out and wire 'reveal what needs attention.' before i even ask." After deploying a fresh build, I waited for the operator to spot brand issues, broken images, missing flags, etc. — instead of auditing the live system myself.
+
+**Lesson:** After any non-trivial deploy or change, immediately run a proactive audit pass: scan the codebase for remaining brand artifacts, fetch the live site, grep for placeholders/TODO/FIXME, check all asset URLs for 404s, verify favicon, scan onboarding/login copy for broken or generic strings, identify exposed services that shouldn't be public. Present the findings as a prioritized list BEFORE the operator asks.
+
+**Why:** Senior dev = surface issues, junior dev = wait to be told. Operators hire seniors to take initiative. Reactive bug-fix wastes operator attention and erodes trust. Proactive audits = one-time write-up vs N-time back-and-forths.
+
+**How to apply:** After deploy / rebrand / new build, run a 5-point audit BEFORE handing off:
+1. Grep upstream brand strings in user-visible files
+2. Fetch the live homepage + 3-5 key routes; eyeball the HTML for placeholders
+3. Check all `<img src=>` paths return 200
+4. Survey config (env vars, ports exposed, feature flags) for anything mid-deploy / undefined
+5. Look for "what does this do?" surfaces — features the operator might not understand without context
+Emit a "Live Audit Report" with severity-ranked findings + 1-click fixes where possible.
+
+**Carve-out:** Don't carpet-bomb pre-emptive fixes. Audit + flag → operator approves → execute. Avoid auto-fixing things that touch brand/UX taste decisions.
+
+---
+
+## 2026-05-31 — Don't overgeneralize "OAuth requires dev app registration." Some platforms don't.
+
+**Trigger:** Told operator "you can't log in to any social account immediately — each platform requires dev portal registration." Operator pushed back: "yes I can, make it happen." Correct: **Bluesky** uses app passwords (no OAuth dev app), **Mastodon** auto-registers per-instance OAuth on first connect, some platforms have public OAuth tiers (e.g., GitHub).
+
+**Lesson:** Each platform has a different connection model. Before telling operator "you must register a dev app," explicitly check whether the target platform requires it. Maintain a per-platform connection-requirement matrix.
+
+**Why:** Overgeneralization slows the operator down. If even ONE platform can connect without dev app work, that's the path to "first real connection in 60 seconds" which validates the whole stack faster.
+
+**Per-platform connection-requirement matrix (Postiz / Promura Agency):**
+| Platform | Dev app required? | Operator's per-account work |
+|---|---|---|
+| Bluesky | NO | Create app password in Bluesky settings (~30s) |
+| Mastodon | NO (per-instance auto-register) | Just enter your instance URL + click connect |
+| Reddit | NO (uses script auth) | Username + password |
+| LinkedIn | YES | OAuth |
+| Instagram/FB/Threads | YES | Meta dev app + app review |
+| TikTok | YES | TikTok dev app + sandbox |
+| X.com | YES | X dev app (Free tier ok for testing) |
+| YouTube | YES | Google Cloud project |
+| Pinterest | YES | Pinterest dev app |
+
+**How to apply:** When operator asks "how do I connect X platform," check the matrix first. Lead with the zero-friction path if applicable.
+
+---
+
 ## 2026-05-19 — When research keeps citing a reference implementation, evaluate USING it directly, not reimplementing it.
 
 **Trigger:** 4 separate research subagents (X, Meta, TikTok, OAuth architecture) all cited Postiz (gitroomhq/postiz-app, AGPL-3, 14k stars) as THE architectural gold standard. Every recommendation was "do what Postiz does." The operator caught what I should have caught session-earlier: if Postiz already does this, why are we reimplementing it on a different fork?

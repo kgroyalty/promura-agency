@@ -249,7 +249,10 @@ export const useMenuItem = () => {
         </svg>
       ),
       path: 'https://affiliate.postiz.com',
-      role: ['ADMIN', 'SUPERADMIN', 'USER'],
+      // Hidden: Promura Agency does not yet have an affiliate program. Set
+      // role to ADMIN/SUPERADMIN/USER and point path to a real Promura URL
+      // when the program launches.
+      role: [],
       requireBilling: true,
     },
     {

@@ -23,14 +23,22 @@ export default async function AuthLayout({
           <div className="flex">{children}</div>
         </div>
       </div>
-      <div className="text-[36px] flex-1 pt-[88px] hidden lg:flex flex-col items-center">
-        <div className="text-center">
-          Over <span className="text-[42px] text-[#FC69FF]">20,000+</span>{' '}
-          Entrepreneurs use
-          <br />
-          Promura Agency To Grow Their Social Presence
+      <div className="text-[36px] flex-1 pt-[88px] hidden lg:flex flex-col items-center justify-center px-[40px]">
+        <div className="text-center max-w-[600px]">
+          <div className="text-[18px] tracking-[4px] text-[#ff3daa] uppercase mb-[16px]">
+            Promura Agency
+          </div>
+          <div className="text-[56px] leading-[1.1] font-bold">
+            Let&apos;s go <span className="text-[#ff3daa]">viral.</span>
+          </div>
+          <div className="text-[18px] text-white/60 mt-[24px] leading-[1.5]">
+            Magazine, social media &amp; influencer management.
+            <br />
+            Editorial production. Multi-platform scheduling. Direct-to-fan
+            subscriptions. Built for serious creators and the agencies that
+            represent them.
+          </div>
         </div>
-        <TestimonialComponent />
       </div>
     </div>
   );
