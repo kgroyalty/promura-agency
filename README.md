@@ -1,11 +1,7 @@
-<p align="center">
-  <a href="https://postiz.com/" target="_blank">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/765e9d72-3ee7-4a56-9d59-a2c9befe2311">
-    <img alt="Postiz Logo" src="https://github.com/user-attachments/assets/f0d30d70-dddb-4142-8876-e9aa6ed1cb99" width="280"/>
-  </picture>
-  </a>
-</p>
+<p align="center"><img src="branding/promura-logo-text.svg" alt="Promura Agency" width="320"></p>
+<h2 align="center">Promura Agency</h2>
+<p align="center"><em>Magazine, social media &amp; influencer management. Let's go viral.</em></p>
+<p align="center">AGPL-3.0 · Built on <a href="https://github.com/gitroomhq/postiz-app">Postiz</a></p>
 
 <p align="center">
 <a href="https://opensource.org/license/agpl-v3">
@@ -13,13 +9,11 @@
 </a>
 </p>
 
-<h3 align="center"><strong><a href="https://github.com/gitroomhq/postiz-agent">NEW: check out Postiz agent CLI! perfect for OpenClaw and other agents</a></strong></h3>
 <div align="center">
   <strong>
   <h2>Your ultimate AI social media scheduling tool</h2><br />
-  <a href="https://postiz.com">Postiz</a>: An alternative to: Buffer.com, Hypefury, Twitter Hunter, etc...<br /><br />
+  Promura Agency offers everything you need to manage your social media posts,<br />build an audience, capture leads, and grow your business.
   </strong>
-  Postiz offers everything you need to manage your social media posts,<br />build an audience, capture leads, and grow your business.
 </div>
 
 <div class="flex" align="center">
@@ -67,11 +61,11 @@
 
 <br /><br />
 
-## 🔌 See the leading Postiz features
+## 🔌 See the leading features
 
 <p align="center">
   <a href="https://www.youtube.com/watch?v=BdsCVvEYgHU" target="_blank">
-    <img alt="Postiz" src="https://github.com/user-attachments/assets/8b9b7939-da1a-4be5-95be-42c6fce772de" />
+    <img alt="Promura Agency" src="https://github.com/user-attachments/assets/8b9b7939-da1a-4be5-95be-42c6fce772de" />
   </a>
 </p>
 
@@ -112,23 +106,20 @@
 
 To have the project up and running, please follow the [Quick Start Guide](https://docs.postiz.com/quickstart)
 
-## Sponsor Postiz
+## Sponsor upstream Postiz
 
-We now give a few options to Sponsor Postiz:
-- Just a donation: You like what we are building, and want to buy us some coffees so we can build faster.
-- Main Repository: Get your logo with a backlink from the main Postiz repository. Postiz has almost 3m downloads and 20k views per month.
-- Main Repository + Website: Get your logo on the central repository and the main website. Here are some metrics: - Website has 20k hits per month + 65 DR (strong backlink) - Repository has 20k hits per month + Almost 3m docker downloads.
+Promura Agency is built on top of [Postiz](https://github.com/gitroomhq/postiz-app). If you'd like to support the upstream project that this fork is built on, options are listed on the Postiz repository.
 
 Link: https://opencollective.com/postiz
 
-## Postiz Compliance
+## Compliance
 
-- Postiz is an open-source, self-hosted social media scheduling tool that supports platforms like X (formerly Twitter), Bluesky, Mastodon, Discord, and others.
-- Postiz hosted service uses official, platform-approved OAuth flows.
-- Postiz does not automate or scrape content from social media platforms.
-- Postiz does not collect, store, or proxy API keys or access tokens from users.
-- Postiz never ask users to paste API keys into our hosted product.
-- Postiz Users always authenticate directly with the social platform (e.g., X, Discord, etc.), ensuring platform compliance and data privacy.
+- Promura Agency is an open-source, self-hosted social media scheduling tool that supports platforms like X (formerly Twitter), Bluesky, Mastodon, Discord, and others.
+- The hosted service uses official, platform-approved OAuth flows.
+- Promura Agency does not automate or scrape content from social media platforms.
+- Promura Agency does not collect, store, or proxy API keys or access tokens from users.
+- We never ask users to paste API keys into our hosted product.
+- Users always authenticate directly with the social platform (e.g., X, Discord, etc.), ensuring platform compliance and data privacy.
 
 ## Star History
 
