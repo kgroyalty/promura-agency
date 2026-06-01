@@ -6,6 +6,7 @@ import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
 import { useUser } from '@gitroom/frontend/components/layout/user.context';
 import { Button } from '@gitroom/react/form/button';
 import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { useToaster } from '@gitroom/react/toaster/toaster';
 
 interface PerSocial {
   provider: string;
@@ -122,11 +123,39 @@ const PerSocialTable: FC<{ title: string; block: StatsBlock }> = ({
 
 export const AdminStatsComponent: FC = () => {
   const user = useUser();
+  const fetch = useFetch();
+  const toast = useToaster();
 
   const [fromInput, setFromInput] = useState(today());
   const [toInput, setToInput] = useState(today());
   const [range, setRange] = useState({ from: today(), to: today() });
   const [unknownOnly, setUnknownOnly] = useState(false);
+  const [syncing, setSyncing] = useState(false);
+
+  const syncPostEverywhere = useCallback(async () => {
+    setSyncing(true);
+    try {
+      const res = await fetch('/admin/posteverywhere/sync', { method: 'POST' });
+      if (!res.ok) {
+        toast.show('Sync failed', 'warning');
+        return;
+      }
+      const json = (await res.json()) as {
+        synced: number;
+        skipped: number;
+      };
+      toast.show(
+        `Synced ${json.synced} account${json.synced === 1 ? '' : 's'} from PostEverywhere${
+          json.skipped ? ` (${json.skipped} skipped)` : ''
+        }`,
+        'success'
+      );
+    } catch (err) {
+      toast.show('Sync failed', 'warning');
+    } finally {
+      setSyncing(false);
+    }
+  }, [fetch, toast]);
 
   const { data, isLoading, error } = useStats({ ...range, unknownOnly });
 
@@ -146,14 +175,19 @@ export const AdminStatsComponent: FC = () => {
 
   return (
     <div className="flex flex-col gap-[16px] text-textColor">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-[12px]">
         <div className="text-[20px] font-[600]">Admin Stats</div>
-        {data && (
-          <div className="text-[13px] opacity-70">
-            {new Date(data.from).toLocaleDateString()} —{' '}
-            {new Date(data.to).toLocaleDateString()}
-          </div>
-        )}
+        <div className="flex items-center gap-[12px]">
+          {data && (
+            <div className="text-[13px] opacity-70">
+              {new Date(data.from).toLocaleDateString()} —{' '}
+              {new Date(data.to).toLocaleDateString()}
+            </div>
+          )}
+          <Button onClick={syncPostEverywhere} loading={syncing}>
+            Sync from PostEverywhere
+          </Button>
+        </div>
       </div>
 
       <div className="flex flex-wrap gap-[8px]">
