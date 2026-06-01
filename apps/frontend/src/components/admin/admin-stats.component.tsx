@@ -145,7 +145,7 @@ export const AdminStatsComponent: FC = () => {
         skipped: number;
       };
       toast.show(
-        `Synced ${json.synced} account${json.synced === 1 ? '' : 's'} from PostEverywhere${
+        `Synced ${json.synced} channel${json.synced === 1 ? '' : 's'}${
           json.skipped ? ` (${json.skipped} skipped)` : ''
         }`,
         'success'
@@ -185,7 +185,7 @@ export const AdminStatsComponent: FC = () => {
             </div>
           )}
           <Button onClick={syncPostEverywhere} loading={syncing}>
-            Sync from PostEverywhere
+            Sync Channels
           </Button>
         </div>
       </div>

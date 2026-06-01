@@ -81,16 +81,19 @@ const PE_KEY = () => process.env.POSTEVERYWHERE_API_KEY || '';
 
 /**
  * Display label per platform. Shown in the channel picker UI.
+ * PostEverywhere is intentionally invisible: operators and creators see the
+ * native platform name only. The provider routing is an infrastructure
+ * concern, not a user-facing one.
  */
 const PLATFORM_LABELS: Record<PostEverywherePlatform, string> = {
-  x: 'X (via PostEverywhere)',
-  instagram: 'Instagram (via PostEverywhere)',
-  tiktok: 'TikTok (via PostEverywhere)',
-  youtube: 'YouTube (via PostEverywhere)',
-  linkedin: 'LinkedIn (via PostEverywhere)',
-  facebook: 'Facebook (via PostEverywhere)',
-  threads: 'Threads (via PostEverywhere)',
-  pinterest: 'Pinterest (via PostEverywhere)',
+  x: 'X',
+  instagram: 'Instagram',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+  linkedin: 'LinkedIn',
+  facebook: 'Facebook',
+  threads: 'Threads',
+  pinterest: 'Pinterest',
 };
 
 /**
