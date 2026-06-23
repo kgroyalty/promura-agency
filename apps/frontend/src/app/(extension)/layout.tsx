@@ -19,6 +19,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
       <body
