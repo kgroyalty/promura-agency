@@ -73,12 +73,16 @@ export class AuthService {
             : false;
 
         const obj = { addedOrg, jwt: await this.jwt(create.users[0].user) };
-        await this._emailService.sendEmail(
-          body.email,
-          'Activate your account',
-          `Click <a href="${process.env.FRONTEND_URL}/auth/activate/${obj.jwt}">here</a> to activate your account`,
-          'top'
-        );
+        try {
+          await this._emailService.sendEmail(
+            body.email,
+            'Activate your account',
+            `Click <a href="${process.env.FRONTEND_URL}/auth/activate/${obj.jwt}">here</a> to activate your account`,
+            'top'
+          );
+        } catch (err) {
+          // Email service may be unconfigured (no Resend key). Users are auto-activated, so this is non-fatal.
+        }
         return obj;
       }
 
