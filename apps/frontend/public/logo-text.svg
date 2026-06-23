@@ -8,6 +8,6 @@
     </g>
     <!-- Wordmark -->
     <text x="180" y="75" font-family="Inter, system-ui, sans-serif" font-weight="800" font-size="44" fill="#FFFFFF" letter-spacing="-0.5">Promura</text>
-    <text x="180" y="115" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="20" fill="#ff3daa" letter-spacing="2">AGENCY</text>
+    <text x="180" y="115" font-family="Inter, system-ui, sans-serif" font-weight="400" font-size="30" fill="#ff3daa" letter-spacing="2">AGENCY</text>
   </g>
 </svg>
